@@ -23,30 +23,31 @@ var currentDateDisplay = $("#currentDay");
     - method to pull current time
 */
 
-var dateToday = moment();
+// to get and display the current date
+var today = moment();
+currentDateDisplay.text(today.format("dddd, MMM do YYYY"));
+
+// to get and validate the current week. can also be used for time (hour)
+// var currentTime = today.format("w");
+// var statusClass;
+// // Check odd, then assign boolean
+// if (weekNum % 2) {
+//   takeOut = true;
+// } else {
+//   takeOut = false;
+// }
+
+// $("#4a").text(takeOut + ", because it's currently week " + weekNum);
 
 // FUNCTIONS ==========================================================================
 //                                   Master Function
 
 function pageInit() {
-  displayCurrentDate();
-  populateRows();
   populateAppointments();
   findCurrentTime();
 }
 
 //                                 Secondary Functions
-
-function displayCurrentDate() {
-  // grab currentDate
-  currentDateDisplay.val(dateToday);
-}
-
-function populateRows() {
-  // generate 7 additional rows
-  // append rows to existing HTML
-  // assign each row with correct time
-}
 
 function findCurrentTime() {
   // grab currentTime
@@ -68,3 +69,17 @@ function saveFunction(event) {
 //  -Save Button, on click, run saveFunction
 
 saveButton.on("click", saveFunction);
+
+/*  Within a funtion to draw letters, also had a variable with an array of letters
+for (var i = 0; i < letters.length; i++) {
+    // Create button
+    var letterBtn = $('<button>');
+    // Assign style to the button
+    letterBtn.addClass('letter-button btn btn-info');
+    // Assign the letter to the data-letter attribute
+    letterBtn.attr('data-letter', letters[i]);
+    // Display the letter
+    letterBtn.text(letters[i]);
+    // Attach the letter element
+    buttonListEl.append(letterBtn);}
+    */
