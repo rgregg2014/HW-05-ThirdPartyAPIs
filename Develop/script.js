@@ -8,17 +8,25 @@
     - var containerRow
     - var formTextArea
     - var saveButton
-    - var currentDate
+    - var currentDateDisplay
     - var currentTime
 
 */
+
+var containerRow = $(".time-block");
+var formTextArea = $("description");
+var saveButton = $(".saveBtn");
+var currentDateDisplay = $("#currentDay");
 // DATA ===============================================================================
 /*
     - method to pull current date
     - method to pull current time
 */
+
+var dateToday = moment();
+
 // FUNCTIONS ==========================================================================
-//========================= Master Function ===========================================
+//                                   Master Function
 
 function pageInit() {
   displayCurrentDate();
@@ -27,11 +35,11 @@ function pageInit() {
   findCurrentTime();
 }
 
-//========================= Secondary Functions =======================================
+//                                 Secondary Functions
 
 function displayCurrentDate() {
   // grab currentDate
-  // display currentDate in header
+  currentDateDisplay.val(dateToday);
 }
 
 function populateRows() {
@@ -50,10 +58,13 @@ function populateAppointments() {
   // populate appointments in appropriate rows
 }
 
-function saveFunction() {
+function saveFunction(event) {
+  event.preventDefault();
   // convert row time value into string to
   // store row time and formTextInput in local storage
 }
 
 // BUTTONS ============================================================================
 //  -Save Button, on click, run saveFunction
+
+saveButton.on("click", saveFunction);
