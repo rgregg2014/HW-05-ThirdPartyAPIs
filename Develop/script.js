@@ -4,19 +4,12 @@
     I want the user to be able to type an appointment into the text fields and save the text into local storage to repopulate on page load.
 */
 // DEPENDECIES AND VARIABLES ==========================================================
-/*
-    - var containerRow
-    - var formTextArea
-    - var saveButton
-    - var currentDateDisplay
-    - var currentTime
-
-*/
-
 var containerRow = $(".time-block");
 var formTextArea = $("description");
 var saveButton = $(".saveBtn");
 var currentDateDisplay = $("#currentDay");
+var today = moment();
+
 // DATA ===============================================================================
 /*
     - method to pull current date
@@ -24,24 +17,14 @@ var currentDateDisplay = $("#currentDay");
 */
 
 // to get and display the current date
-var today = moment();
-currentDateDisplay.text(today.format("dddd, MMM do YYYY"));
 
 // to get and validate the current week. can also be used for time (hour)
-// var currentTime = today.format("w");
-// var statusClass;
-// // Check odd, then assign boolean
-// if (weekNum % 2) {
-//   takeOut = true;
-// } else {
-//   takeOut = false;
-// }
-
-// $("#4a").text(takeOut + ", because it's currently week " + weekNum);
+var currentTime = moment().format("kk");
 
 // FUNCTIONS ==========================================================================
 //                                   Master Function
 
+currentDateDisplay.text(today.format("LL"));
 function pageInit() {
   populateAppointments();
   findCurrentTime();
@@ -49,18 +32,36 @@ function pageInit() {
 
 //                                 Secondary Functions
 
+console.log(currentTime);
+
 function findCurrentTime() {
-  // grab currentTime
-  // assign CSS classes to rows based on time
+  if (currentTime < 9) {
+    $("#9a").attr(".past");
+  } else if (currentTime == 9) {
+    $("#9a").attr(".present");
+  } else {
+    $("#9a").addClass(".future");
+  }
+  //Do this same loop for each container, just remeber to switch over to military time @ noon
 }
+// var weekNum = today.format("w");
+// var takeOut;
+// // Check odd, then assign boolean
+// if(weekNum % 2) {
+//   takeOut = true;
+// } else {
+//   takeOut = false;
 
 function populateAppointments() {
+  //   localStorage.getItem("");
+  //   localStorage.getItem();
   // grab stored appointments
   // populate appointments in appropriate rows
 }
 
 function saveFunction(event) {
   event.preventDefault();
+  console.log("Someone Saved!");
   // convert row time value into string to
   // store row time and formTextInput in local storage
 }
@@ -69,17 +70,3 @@ function saveFunction(event) {
 //  -Save Button, on click, run saveFunction
 
 saveButton.on("click", saveFunction);
-
-/*  Within a funtion to draw letters, also had a variable with an array of letters
-for (var i = 0; i < letters.length; i++) {
-    // Create button
-    var letterBtn = $('<button>');
-    // Assign style to the button
-    letterBtn.addClass('letter-button btn btn-info');
-    // Assign the letter to the data-letter attribute
-    letterBtn.attr('data-letter', letters[i]);
-    // Display the letter
-    letterBtn.text(letters[i]);
-    // Attach the letter element
-    buttonListEl.append(letterBtn);}
-    */
