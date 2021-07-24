@@ -52,7 +52,7 @@ var today = moment();
 var currentTime = moment().format("kk");
 
 // FUNCTIONS ==========================================================================
-//                                   Master Function
+//                                  Master Function
 
 pageInit();
 
@@ -62,7 +62,7 @@ function pageInit() {
   findCurrentTime();
 }
 
-//                                 Secondary Functions
+//                                 Time Functions
 
 function findCurrentTime() {
   //reads current hour and compares to equivalent hour value, changes class for CSS styling
@@ -139,23 +139,156 @@ function findCurrentTime() {
   }
 }
 
+//                                Population Functions
+
 function populateAppointments() {
-  //   localStorage.getItem("");
-  //   localStorage.getItem();
-  // grab stored appointments
-  // populate appointments in appropriate rows
+  populateNine();
+  populateTen();
+  populateEleven();
+  populateTwelve();
+  populateOne();
+  populateTwo();
+  populateThree();
+  populateFour();
+  populateFive();
 }
 
-function saveFunction(event) {
+function populateNine() {
+  var pop9 = localStorage.getItem("9AM", a9Text);
+  a9Text.val(pop9);
+}
+
+function populateTen() {
+  var pop10 = localStorage.getItem("10AM", a10Text);
+  a10Text.val(pop10);
+}
+
+function populateEleven() {
+  var pop11 = localStorage.getItem("11AM", a11Text);
+  a11Text.val(pop11);
+}
+
+function populateTwelve() {
+  var pop12 = localStorage.getItem("12PM", p12Text);
+  p12Text.val(pop12);
+}
+
+function populateOne() {
+  var pop1 = localStorage.getItem("1PM", p1Text);
+  p1Text.val(pop1);
+}
+
+function populateTwo() {
+  var pop2 = localStorage.getItem("2PM", p2Text);
+  p2Text.val(pop2);
+}
+
+function populateThree() {
+  var pop3 = localStorage.getItem("3PM", p3Text);
+  p3Text.val(pop3);
+}
+
+function populateFour() {
+  var pop4 = localStorage.getItem("4PM", p4Text);
+  p4Text.val(pop4);
+}
+
+function populateFive() {
+  var pop5 = localStorage.getItem("5PM", p5Text);
+  p1Text.val(pop5);
+}
+
+//                                  Save Functions
+
+function saveFunction9(event) {
   event.preventDefault();
   console.log("Someone Saved!");
-  localStorage.setItem("Time", "This is going in");
-  localStorage.setItem("Appointment", "So is this");
+  localStorage.setItem("9AM", JSON.stringify(a9Text.val()));
+  a9Text.val("");
   // convert row time value into string to
   // store row time and formTextInput in local storage
 }
 
-// BUTTONS ============================================================================
-//  -Save Button, on click, run saveFunction
+function saveFunction10(event) {
+  event.preventDefault();
+  console.log("Someone Saved!");
+  localStorage.setItem("10AM", JSON.stringify(a10Text.val()));
+  a10Text.val("");
+  // convert row time value into string to
+  // store row time and formTextInput in local storage
+}
 
-button9.on("click", saveFunction);
+function saveFunction11(event) {
+  event.preventDefault();
+  console.log("Someone Saved!");
+  localStorage.setItem("11AM", JSON.stringify(a11Text.val()));
+  a11Text.val("");
+  // convert row time value into string to
+  // store row time and formTextInput in local storage
+}
+
+function saveFunction12(event) {
+  event.preventDefault();
+  console.log("Someone Saved!");
+  localStorage.setItem("12PM", JSON.stringify(p12Text.val()));
+  p12Text.val("");
+  // convert row time value into string to
+  // store row time and formTextInput in local storage
+}
+
+function saveFunction1(event) {
+  event.preventDefault();
+  console.log("Someone Saved!");
+  localStorage.setItem("1PM", JSON.stringify(p1Text.val()));
+  p1Text.val("");
+  // convert row time value into string to
+  // store row time and formTextInput in local storage
+}
+
+function saveFunction2(event) {
+  event.preventDefault();
+  console.log("Someone Saved!");
+  localStorage.setItem("2PM", JSON.stringify(p2Text.val()));
+  p2Text.val("");
+  // convert row time value into string to
+  // store row time and formTextInput in local storage
+}
+
+function saveFunction3(event) {
+  event.preventDefault();
+  console.log("Someone Saved!");
+  localStorage.setItem("3PM", JSON.stringify(p3Text.val()));
+  p3Text.val("");
+  // convert row time value into string to
+  // store row time and formTextInput in local storage
+}
+
+function saveFunction4(event) {
+  event.preventDefault();
+  console.log("Someone Saved!");
+  localStorage.setItem("4PM", JSON.stringify(p4Text.val()));
+  p4Text.val("");
+  // convert row time value into string to
+  // store row time and formTextInput in local storage
+}
+
+function saveFunction5(event) {
+  event.preventDefault();
+  console.log("Someone Saved!");
+  localStorage.setItem("5PM", JSON.stringify(p5Text.val()));
+  p5Text.val("");
+  // convert row time value into string to
+  // store row time and formTextInput in local storage
+}
+// BUTTONS ============================================================================
+//  -Save Buttons, on click, run saveFunctions
+
+button9.on("click", saveFunction9);
+button10.on("click", saveFunction10);
+button11.on("click", saveFunction11);
+button12.on("click", saveFunction12);
+button1.on("click", saveFunction1);
+button2.on("click", saveFunction2);
+button3.on("click", saveFunction3);
+button4.on("click", saveFunction4);
+button5.on("click", saveFunction5);
